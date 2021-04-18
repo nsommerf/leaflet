@@ -18,17 +18,24 @@ function markerSize(mag) {
 
 // Define a markerSize() function that will give each earthquake a different opacity based on its depth.
 function markerColor(depth) {
+  console.log(depth);
   if(depth > 150){
     return 1;
   }
   else if (depth > 100){
-    return .75;
+    return .85;
   }
-  else if (depth > 50){
+  else if (depth > 70){
+    return .7;
+  }
+  else if (depth > 10){
+    return .6;
+  }
+  else if (depth > 0){
     return .5;
   }
   else{
-    return .25;
+    return .3;
   }
 }
 
@@ -81,7 +88,7 @@ d3.json(url).then(function(response) {
         // Setting our circle's radius to equal the output of our markerSize() function:
         // This will make our marker's size proportionate to its population.
         radius: markerSize(response.features[i].properties.mag)
-      }).bindPopup(response.features[i].properties.place));
+      }).bindPopup(response.features[i].properties.place + "<hr> Magnitude:  " + response.features[i].properties.mag + "<hr> Depth: " + response.features[i].geometry.coordinates[2]));
     
     //  markers.addLayer(L.marker([response.features[i].geometry.coordinates[1], response.features[i].geometry.coordinates[0]])
     //    .bindPopup(response.features[i].properties.place));
