@@ -13,7 +13,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 // Define a markerSize() function that will give each earthquake a different radius based on its magnitude.
 function markerSize(mag) {
-  return mag * 100;
+  return mag * 200;
 }
 
 // Define a markerSize() function that will give each earthquake a different opacity based on its depth.
