@@ -93,10 +93,6 @@ d3.json(url).then(function(response) {
  
      // Add the minimum and maximum.
      var legendInfo = "<h3>Earthquake Depth</h3>"; 
-    //   "<div class=\"labels\">" +
-     //    "<div class=\"min\">" + "-10" + "</div>" +
-     //    "<div class=\"max\">" + "100" + "</div>" +
-     //  "</div>" + "<table>";
  
      div.innerHTML = legendInfo;
 
