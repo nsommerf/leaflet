@@ -74,7 +74,6 @@ d3.json(url).then(function(response) {
         color: "black",
         fillColor: markerColor(response.features[i].geometry.coordinates[2]),
         // Setting our circle's radius to equal the output of our markerSize() function:
-        // This will make our marker's size proportionate to its population.
         radius: markerSize(response.features[i].properties.mag)
       }).bindPopup(response.features[i].properties.place + "<hr> Magnitude:  " + response.features[i].properties.mag + "<hr> Depth: " + response.features[i].geometry.coordinates[2]));
     
