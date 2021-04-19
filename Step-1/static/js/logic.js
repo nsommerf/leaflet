@@ -59,7 +59,6 @@ d3.json(url).then(function(response) {
   // Loop through the data
   for (var i = 0; i < response.features.length; i++) {
     // Set the data location property to a variable.
-   // var location = response.features[i];
    // console.log(location);
     // Check for the location property.
     //if (location) {
