@@ -40,8 +40,6 @@ function markerColor(depth) {
 }
 
 
-// Creating a new marker:
-// We pass in some initial options, and then add the marker to the map by using the addTo() method.
 /*
 var marker = L.marker([45.52, -122.67], {
   draggable: true,
@@ -81,7 +79,8 @@ d3.json(url).then(function(response) {
     //console.log(response.features[i].geometry.coordinates[2]);
     //console.log(location);
       // Add a new marker to the cluster group, and bind a popup.
-      markers.addLayer(L.circle(location, {
+      markers.addLayer(
+        L.circle(location, {
         fillOpacity: 1,
         color: "black",
         fillColor: markerColor(response.features[i].geometry.coordinates[2]),
