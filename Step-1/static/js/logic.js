@@ -103,15 +103,7 @@ d3.json(url).then(function(response) {
      }
 
     div.innerHTML += "<table>" + labels.join("") + "</table>";
- /*
-     limits.forEach(function(limit, index) {
-       colorp.push("<li style=\"background-color: " + colors[index] + "\"></li>");
-       labels.push("<li>" + limits[index] + "</li>");
-     });
- 
-     div.innerHTML += "<td><ul>" + colorp.join("") + "</ul></td>";
-     div.innerHTML += "<td><ul>" + labels.join("") + "</ul></td></tr></table>";
- */    
+
      return div;
    };
  
