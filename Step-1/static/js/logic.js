@@ -39,16 +39,6 @@ function markerColor(depth) {
   }
 }
 
-
-/*
-var marker = L.marker([45.52, -122.67], {
-  draggable: true,
-  title: "My First Marker"
-}).addTo(myMap);
-
-// Binding a popup to our marker
-marker.bindPopup("Hello There!");
-*/
 // Assemble the API query URL.
 var url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
