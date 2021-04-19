@@ -76,11 +76,6 @@ d3.json(url).then(function(response) {
         // Setting our circle's radius to equal the output of our markerSize() function:
         radius: markerSize(response.features[i].properties.mag)
       }).bindPopup(response.features[i].properties.place + "<hr> Magnitude:  " + response.features[i].properties.mag + "<hr> Depth: " + response.features[i].geometry.coordinates[2]));
-    
-    //  markers.addLayer(L.marker([response.features[i].geometry.coordinates[1], response.features[i].geometry.coordinates[0]])
-    //    .bindPopup(response.features[i].properties.place));
-    //}
-    //.bindPopup("<h1>" + cities[i].name + "</h1> <hr> <h3>Population: " + cities[i].population + "</h3>")
 
   }
 
