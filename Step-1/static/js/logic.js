@@ -19,23 +19,23 @@ function markerSize(mag) {
 // Define a markerSize() function that will give each earthquake a different opacity based on its depth.
 function markerColor(depth) {
   console.log(depth);
-  if(depth > 150){
-    return 1;
-  }
-  else if (depth > 100){
-    return .85;
+  if(depth > 90){
+    return "darkred";
   }
   else if (depth > 70){
-    return .7;
+    return "red";
+  }
+  else if (depth > 50){
+    return "orange";
+  }
+  else if (depth > 30){
+    return "yellow";
   }
   else if (depth > 10){
-    return .6;
-  }
-  else if (depth > 0){
-    return .5;
+    return "yellowgreen";
   }
   else{
-    return .3;
+    return "green";
   }
 }
 
@@ -82,9 +82,9 @@ d3.json(url).then(function(response) {
     //console.log(location);
       // Add a new marker to the cluster group, and bind a popup.
       markers.addLayer(L.circle(location, {
-        fillOpacity: markerColor(response.features[i].geometry.coordinates[2]),
-        color: "white",
-        fillColor: "red",
+        fillOpacity: 1,
+        color: "black",
+        fillColor: markerColor(response.features[i].geometry.coordinates[2]),
         // Setting our circle's radius to equal the output of our markerSize() function:
         // This will make our marker's size proportionate to its population.
         radius: markerSize(response.features[i].properties.mag)
@@ -99,5 +99,47 @@ d3.json(url).then(function(response) {
 
   // Add our marker cluster layer to the map.
   myMap.addLayer(markers);
+
+   // Set up the legend.
+   var legend = L.control({ position: "bottomright" });
+   legend.onAdd = function() {
+     var div = L.DomUtil.create("div", "info legend");
+     var labels = [];
+     var colorp = [];
+     var colors = ["darkred", "red", "orange", "yellow", "yellowgreen", "green"];
+     var limits = ["90+", "70-90", "50-70", "30-50", "10-30", "-10-10"];
+ 
+     // Add the minimum and maximum.
+     var legendInfo = "<h3>Earthquake Depth</h3>"; 
+    //   "<div class=\"labels\">" +
+     //    "<div class=\"min\">" + "-10" + "</div>" +
+     //    "<div class=\"max\">" + "100" + "</div>" +
+     //  "</div>" + "<table>";
+ 
+     div.innerHTML = legendInfo;
+
+     for(var i = 0; i<6; i++) {
+      //console.log(colors[i]);
+      labels.push("<tr><td style=\"color:" + colors[i] + "; background-color:" + colors[i] + ";\">CD<td>");
+      labels.push("<td>" + limits[i] + "</td></tr>");
+     }
+
+    div.innerHTML += "<table>" + labels.join("") + "</table>";
+ /*
+     limits.forEach(function(limit, index) {
+       colorp.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+       labels.push("<li>" + limits[index] + "</li>");
+     });
+ 
+     div.innerHTML += "<td><ul>" + colorp.join("") + "</ul></td>";
+     div.innerHTML += "<td><ul>" + labels.join("") + "</ul></td></tr></table>";
+ */    
+     return div;
+   };
+ 
+   // Adding the legend to the map
+   legend.addTo(myMap);
+ 
+ 
 
 });
