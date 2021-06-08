@@ -1,5 +1,5 @@
-# leaflet-challenge
-Leaflet use
+# leaflet
+Leaflet use HW17
 
 Create a map using Leaflet that plots all of the earthquakes from your data set based on their longitude and latitude.
 
